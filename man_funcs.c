@@ -11,7 +11,10 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new_node = malloc(sizeof(stack_t));
 
 	if (arg == NULL || _isdigit(arg) == 1)
+	{
 		handle_error(line_number, "usage: push integer", stack);
+		free(new_node);
+	}
 
 	value = atoi(arg);
 

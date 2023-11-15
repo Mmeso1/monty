@@ -18,6 +18,9 @@ void push(stack_t **stack, unsigned int line_number)
 
 	value = atoi(arg);
 
+	if (value == 0 && strcmp(arg, "0") != 0)
+		handle_error(line_number, "usage: push integer", stack);
+
 	if (new_node == NULL)
 		handle_error(0, "Error: malloc failed", stack);
 

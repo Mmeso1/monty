@@ -54,7 +54,7 @@ void pstr(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 
-void processLine(char *line, unsigned int line_number);
+void processLine(char *line, unsigned int line_number, stack_t **stack);
 void mapInstructions(char *args, stack_t **stack, unsigned int line_number);
 void handle_error(unsigned int line_number, const char *message, stack_t **stack);
 void cleanup(stack_t *stack);

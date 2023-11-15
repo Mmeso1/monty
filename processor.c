@@ -8,11 +8,10 @@
  */
 int isStack = 1;
 char *arg = NULL;
-void processLine(char *line, unsigned int line_number)
+void processLine(char *line, unsigned int line_number, stack_t **stack)
 {
 	char *token, *args[2];
 	int i;
-	stack_t *stack = NULL;
 
 	if (line[0] == '#')
 		return;
@@ -34,7 +33,7 @@ void processLine(char *line, unsigned int line_number)
 		else
 		{
 			arg = args[1];
-			mapInstructions(args[0], &stack, line_number);
+			mapInstructions(args[0], stack, line_number);
 		}
 	}
 }

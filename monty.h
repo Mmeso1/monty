@@ -61,5 +61,6 @@ int _isdigit(char *str);
 void mapInstructions(char *args, stack_t **stack, unsigned int line_number);
 void handle_error(unsigned int line_number, const char *message, stack_t **stack);
 void cleanup(stack_t *stack);
+int is_empty_or_comment(const char *line);
 
 #endif

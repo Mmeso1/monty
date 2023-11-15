@@ -13,7 +13,7 @@ void processLine(char *line, unsigned int line_number, stack_t **stack)
 	char *token, *args[2];
 	int i;
 
-	if (line[0] == '\0' || line[0] == '#')
+	if (is_empty_or_comment(line))
 		return;
 
 	token = strtok(line, " \t\n");
@@ -38,6 +38,19 @@ void processLine(char *line, unsigned int line_number, stack_t **stack)
 	}
 }
 
+int is_empty_or_comment(const char *line) {
+    int i = 0;
+
+    while (line[i] != '\0') {
+        if (!isspace(line[i]) && line[i] != '#')
+            return 0;
+        i++;
+    }
+
+    return 1;
+}
+
+
 /**
  * mapInstructions - map the commands to their respective functions
  * @args: the argument string that contains the
@@ -60,7 +73,6 @@ void mapInstructions(char *args, stack_t **stack, unsigned int line_number)
 
 	while (instructions[i].opcode != NULL)
 	{
-		printf("Current arg: %s\n", args);
 		if (strcmp(args, instructions[i].opcode) == 0)
 		{
 			instructions[i].f(stack, line_number);

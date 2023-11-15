@@ -1,7 +1,7 @@
 #include "monty.h"
 /**
  * add - adds the top two elements of the stack
- * @stack: a double pointer to the stack heaad
+ * @stack: a double pointer to the stack head
  * @line_number: the line number
  * Return: nothing
  */
@@ -12,4 +12,16 @@ void add(stack_t **stack, unsigned int line_number)
 
 	(*stack)->next->n += (*stack)->n;
 	pop(stack, line_number);
+}
+
+/**
+ * nop - doesn’t do anything.
+ * @stack: a double pointer to the stack head
+ * @line_number: the line number
+ * Return: nothing
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+    (void)stack;
+    (void)line_number;
 }

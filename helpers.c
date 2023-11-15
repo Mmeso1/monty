@@ -36,3 +36,25 @@ void cleanup(stack_t *stack)
 		free(temp);
 	}
 }
+
+/**
+ * _isdigit - checks if it is a digit
+ * @str: the str arg
+ * Return: 1 or 0
+ */
+int _isdigit(char *str)
+{
+    int i = 0;
+
+    if (str[i] == '-')
+        i++;
+    while (str[i] != '\0')
+    {
+        if (!isdigit(str[i]))
+            return (1);
+	i++;
+    }
+
+    return (0);
+}
+

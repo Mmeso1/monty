@@ -68,6 +68,6 @@ void mapInstructions(char *args, stack_t **stack, unsigned int line_number)
 		i++;
 	}
 
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, args);
+	fprintf(stderr, "L%d: unknown instruction %s", line_number, args);
 	exit(EXIT_FAILURE);
 }

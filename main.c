@@ -7,6 +7,8 @@
  * Return: 1 if success else 0
  */
 unsigned int line_number = 0;
+int isStack = 1;
+char *arg = NULL;
 int main(int argc, char *argv[])
 {
 	char line[100];
@@ -38,3 +40,38 @@ int main(int argc, char *argv[])
 }
 
 
+/**
+ * processLine - To process the line in the cmd and pass to funcs
+ * @line: The cmdlinei
+ * @line_number: the line number
+ * Return: Nothing for now
+ */
+void processLine(char *line, unsigned int line_number, stack_t **stack)
+{
+	char *token, *args[2];
+	int i;
+
+	if (is_empty_or_comment(line))
+		return;
+
+	token = strtok(line, " \t\n");
+
+	for (i = 0; i < 2 && token != NULL; i++)
+	{
+		args[i] = token;
+		token = strtok(NULL, " \t\n");
+	}
+
+	if (i >= 1)
+	{
+		if (strcmp(args[0], "stack") == 0)
+			isStack = 1;
+		else if (strcmp(args[0], "queue") == 0)
+			isStack = 0;
+		else
+		{
+			arg = args[1];
+			mapInstructions(args[0], stack, line_number);
+		}
+	}
+}

@@ -1,53 +1,23 @@
 #include "monty.h"
 
 /**
- * processLine - To process the line in the cmd and pass to funcs
- * @line: The cmdlinei
- * @line_number: the line number
- * Return: Nothing for now
+ * is_empty_or_command - ...
+ * @line: ...
+ * Return: ...
  */
-int isStack = 1;
-char *arg = NULL;
-void processLine(char *line, unsigned int line_number, stack_t **stack)
+
+int is_empty_or_comment(const char *line)
 {
-	char *token, *args[2];
-	int i;
+	int i = 0;
 
-	if (is_empty_or_comment(line))
-		return;
-
-	token = strtok(line, " \t\n");
-
-	for (i = 0; i < 2 && token != NULL; i++)
+	while (line[i] != '\0')
 	{
-		args[i] = token;
-		token = strtok(NULL, " \t\n");
+		if (!isspace(line[i]) && line[i] != '#')
+			return (0);
+		i++;
 	}
 
-	if (i <= 2)
-	{
-		if (strcmp(args[0], "stack") == 0)
-			isStack = 1;
-		else if (strcmp(args[0], "queue") == 0)
-			isStack = 0;
-		else
-		{
-			arg = args[1];
-			mapInstructions(args[0], stack, line_number);
-		}
-	}
-}
-
-int is_empty_or_comment(const char *line) {
-    int i = 0;
-
-    while (line[i] != '\0') {
-        if (!isspace(line[i]) && line[i] != '#')
-            return 0;
-        i++;
-    }
-
-    return 1;
+	return (1);
 }
 
 

@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 	}
 
 	fclose(file);
+	cleanup(stack);
 
 	return (0);
 }

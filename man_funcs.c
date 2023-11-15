@@ -7,20 +7,18 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int value;
-	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *new_node;
 
 	if (arg == NULL || _isdigit(arg) == 1)
-	{
 		handle_error(line_number, "usage: push integer", stack);
-		free(new_node);
-	}
 
-	value = atoi(arg);
-
+	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
+	{
+		free(new_node);
 		handle_error(0, "Error: malloc failed", stack);
-	new_node->n = value;
+	}
+	new_node->n = atoi(arg);
 	new_node->prev = NULL;
 	if (isStack)
 	{
@@ -33,19 +31,16 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		stack_t *temp = *stack;
 
-		if (*stack == NULL)
-		{
-			new_node->next = NULL;
+		while (temp && temp->next)
+			temp = temp->next;
+		if (!temp)
 			*stack = new_node;
-		}
 		else
 		{
-			while (temp->next != NULL)
-				temp = temp->next;
 			temp->next = new_node;
 			new_node->prev = temp;
-			new_node->next = NULL;
 		}
+		new_node->next = NULL;
 	}
 }
 

@@ -13,7 +13,7 @@ void processLine(char *line, unsigned int line_number, stack_t **stack)
 	char *token, *args[2];
 	int i;
 
-	if (line[0] == '#')
+	if (line[0] == '\0' || line[0] == '#')
 		return;
 
 	token = strtok(line, " \t\n");
@@ -60,6 +60,7 @@ void mapInstructions(char *args, stack_t **stack, unsigned int line_number)
 
 	while (instructions[i].opcode != NULL)
 	{
+		printf("Current arg: %s\n", args);
 		if (strcmp(args, instructions[i].opcode) == 0)
 		{
 			instructions[i].f(stack, line_number);

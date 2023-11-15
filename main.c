@@ -7,7 +7,6 @@
  * Return: 1 if success else 0
  */
 unsigned int line_number = 0;
-
 int main(int argc, char *argv[])
 {
 	char line[100];

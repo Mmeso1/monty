@@ -44,17 +44,17 @@ void cleanup(stack_t *stack)
  */
 int _isdigit(char *str)
 {
-    int i = 0;
+	int i = 0;
 
-    if (str[i] == '-')
-        i++;
-    while (str[i] != '\0')
-    {
-        if (!isdigit(str[i]))
-            return (1);
-	i++;
-    }
+	if (str[i] == '-')
+		i++;
+	while (str[i] != '\0')
+	{
+		if (!isdigit(str[i]))
+			return (1);
+		i++;
+	}
 
-    return (0);
+	return (0);
 }
 

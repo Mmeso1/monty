@@ -102,3 +102,26 @@ void pop(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 	free(temp);
 }
+
+/**
+ * swap - swaps the top two elements of the stack
+ * @stack: double pointer to the head of the stack
+ * @line_number: the line where the error occurs
+ * Return: nothing
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	if (*stack == NULL || (*stack)->next ==NULL)
+	{
+		fprintf(stderr,"L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	temp = (*stack)->next;
+	(*stack)->next = temp->next;
+	temp->prev = NULL;
+	temp->next = *stack;
+	(*stack)->prev = temp;
+	*stack = temp;
+}

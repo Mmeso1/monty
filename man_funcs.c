@@ -22,12 +22,31 @@ void push(stack_t **stack, unsigned int line_number)
 
 	new_node->n = value;
 	new_node->prev = NULL;
-	new_node->next = *stack;
+	if (isStack)
+	{
+		new_node->next = *stack;
+		if (*stack != NULL)
+			(*stack)->prev = new_node;
+		*stack = new_node;
+	}
+	else
+	{
+		stack_t *temp = *stack;
 
-	if (*stack != NULL)
-		(*stack)->prev = new_node;
-
-	*stack = new_node;
+		if (*stack == NULL)
+		{
+			new_node->next = NULL;
+			*stack = new_node;
+		}
+		else
+		{
+			while (temp->next != NULL)
+				temp = temp->next;
+			temp->next = new_node;
+			new_node->prev = temp;
+			new_node->next = NULL;
+		}
+	}
 }
 
 /**

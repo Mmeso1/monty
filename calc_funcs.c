@@ -31,7 +31,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element of the stack
+ * _div - divides the second top element of the stack
  * by the top element of the stack
  * @stack: a double pointer to the stack head
  * @line_number: the line number
@@ -75,7 +75,7 @@ void mul(stack_t **stack, unsigned int line_number)
 void mod(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
-		handle_error(line_number, "can't mul, stack too short", stack);
+		handle_error(line_number, "can't mod, stack too short", stack);
 
 	if ((*stack)->n == 0)
 		handle_error(line_number, "division by zero", stack);

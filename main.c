@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
  * processLine - To process the line in the cmd and pass to funcs
  * @line: The cmdlinei
  * @line_number: the line number
+ * @stack: the stack
  * Return: Nothing for now
  */
 void processLine(char *line, unsigned int line_number, stack_t **stack)

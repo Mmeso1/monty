@@ -42,6 +42,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
+
 	while (current != NULL && isalpha(current->n) && current->n != 0)
 	{
 		if (isprint(current->n))
@@ -64,27 +65,27 @@ void pstr(stack_t **stack, unsigned int line_number)
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
-    stack_t *temp, *last;
+	stack_t *temp, *last;
 
-    (void)line_number;
+	(void)line_number;
 
-    if (*stack != NULL && (*stack)->next != NULL)
-    {
-        temp = *stack;
-        last = *stack;
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		temp = *stack;
+		last = *stack;
 
-        while (last->next != NULL)
-        {
-            last = last->next;
-        }
+		while (last->next != NULL)
+		{
+			last = last->next;
+		}
 
-        *stack = temp->next;
-        temp->next->prev = NULL;
+		*stack = temp->next;
+		temp->next->prev = NULL;
 
-        temp->next = NULL;
-        temp->prev = last;
-        last->next = temp;
-    }
+		temp->next = NULL;
+		temp->prev = last;
+		last->next = temp;
+	}
 }
 
 /**
@@ -95,23 +96,23 @@ void rotl(stack_t **stack, unsigned int line_number)
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {
-    stack_t *last;
-    (void)line_number;
+	stack_t *last;
+	(void)line_number;
 
-    if (*stack != NULL && (*stack)->next != NULL)
-    {
-        last = *stack;
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		last = *stack;
 
-        while (last->next != NULL)
-        {
-            last = last->next;
-        }
+		while (last->next != NULL)
+		{
+			last = last->next;
+		}
 
-        last->prev->next = NULL;
-        last->prev = NULL;
-        last->next = *stack;
-        (*stack)->prev = last;
-        *stack = last;
-    }
+		last->prev->next = NULL;
+		last->prev = NULL;
+		last->next = *stack;
+		(*stack)->prev = last;
+		*stack = last;
+	}
 }
 

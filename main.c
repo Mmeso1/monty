@@ -69,6 +69,8 @@ void processLine(char *line, unsigned int line_number, stack_t **stack)
 			isStack = 1;
 		else if (strcmp(args[0], "queue") == 0)
 			isStack = 0;
+		else if (args[0][0] == '#')
+			return;
 		else
 		{
 			arg = args[1];

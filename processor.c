@@ -12,7 +12,7 @@ int is_empty_or_comment(const char *line)
 
 	while (line[i] != '\0')
 	{
-		if (!isspace(line[i]) && line[i] != '#')
+		if (!isspace(line[i]) || line[i] != '#')
 			return (0);
 		i++;
 	}
